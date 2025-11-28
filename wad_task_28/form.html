@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> form validation</title>
+  <style>
+    input {
+      display: block;
+      width: 300px;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    .error {
+      border: 2px solid red;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+<h2>form validation</h2>
+<form id="myForm">
+  <input type="text" id="name" placeholder="Enter Name">
+  <input type="email" id="email" placeholder="Enter Email">
+  <input type="password" id="password" placeholder="Enter Password">
+  <button type="submit">Submit</button>
+</form>
+<script>
+  const form = document.getElementById("myForm");
+  const users = [];
+  form.onsubmit = function(event) {
+    event.preventDefault();
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+    let valid = true;
+    if (name.value.length < 3) {
+      name.classList.add("error");
+      valid = false;
+    } else {
+      name.classList.remove("error");
+    }
+    if (email.value.indexOf("@") === -1 || email.value.indexOf(".") === -1) {
+      email.classList.add("error");
+      valid = false;
+    } else {
+      email.classList.remove("error");
+    }
+    if (password.value.length < 6) {
+      password.classList.add("error");
+      valid = false;
+    } else {
+      password.classList.remove("error");
+    }
+    if (valid) {
+      const user = {
+        name: name.value,
+        email: email.value,
+        password: password.value
+      };
+      users.push(user);
+      alert("Form is valid!\nName: " + user.name + "\nEmail: " + user.email);
+      name.value = "";
+      email.value = "";
+      password.value = "";
+
+      console.log(users);
+    } else {
+      alert("Please fill all fields correctly.");
+    }
+  }
+</script>
+</body>
+</html>

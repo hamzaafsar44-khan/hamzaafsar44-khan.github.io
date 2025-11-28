@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lazy Image Loading</title>
+  <style>
+    img {
+      width: 100%;
+      margin-bottom: 50px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Lazy Loading Images</h1>
+<p>Scroll down to load the images.</p>
+
+<!-- First image loads normally -->
+<img src="Untitled (1).png" loading="eager" alt="screen 1">
+
+<!-- Other images load lazily -->
+<img src="Untitled (2).png" loading="lazy" alt="screen 2">
+<img src="Untitled.png" loading="lazy" alt="screen 3">
+</body>
+</html>
